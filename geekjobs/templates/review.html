@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+
+{% block content %}
+<div class="row"><br><br></div>
+
+<p> {% trans 'Review your ad and make changes if necessary.' %} </p>
+<h2 class="m-b-2">{% trans 'Step 2: Review your Ad' %}</h2>
+<hr class="m-b-2">
+
+<div class="well">
+    {% if form.city.value %}
+    <h3>{{form.title.value}} {% trans 'at' %} {{form.name.value}} ({{form.city.value}}, Germany){% if form.remote.value %} (allows remote){% endif %}</h3>
+    {% else %}
+    <h3>{{form.title.value}} at {{form.name.value}} (Germany){% if form.remote.value %} (allows remote){% endif %}</h3>
+    {% endif %}
+    <br>
+
+    <p>
+        <b>{% trans 'Posted:' %}</b> today
+        <br>
+    </p>
+
+    <p>
+        <b>{% trans 'Location:' %}</b> {{form.city.value}} {{form.state.value}}
+        <br>
+    </p>
+
+    <div>
+        <b>{% trans 'Job Description:' %}</b>
+        <br>
+        <br>
+        <div class="trix-content">
+            {{ form.description.value|safe }}
+        </div>
+    </div>
+    <br>
+
+    <p>
+        <b>{% trans 'How to apply:' %}</b>
+        <br>
+        <br>
+        {{ form.instructions.value }}
+    </p>
+</div>
+<br>
+
+<form method="POST" action="{% url 'add_job' %}">{% csrf_token %}
+    {% for field in form %}{{ field.as_hidden }}{% endfor %}
+    <button type="submit" class="btn btn-primary"> {% trans 'Pay for your Ad' %} </button>
+</form>
+{% endblock %}

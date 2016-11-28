@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="row"><br><br></div>
+
+<div id="states">
+    {% for key, bundesland in bundeslander.items %}
+    <a class="nav-link text-uppercase" href="{{key}}">{{bundesland}}</a>
+    {% endfor %}
+</div>
+
+<hr>
+
+
+<h6> {% trans "All jobs in "%} {{state}}</h6>
+
+<table id="jobs-table"></table>
+{% endblock %}
+
