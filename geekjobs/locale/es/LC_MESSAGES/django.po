@@ -1,0 +1,179 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-25 16:14+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: geekjobs/forms.py:31
+msgid "Job Title"
+msgstr "Título de la oferta"
+
+#: geekjobs/forms.py:32 geekjobs/templates/new.html.py:37
+msgid "City"
+msgstr "Ciudad"
+
+#: geekjobs/forms.py:33 geekjobs/templates/new.html.py:55
+msgid "State"
+msgstr "Comunidad Autónoma"
+
+#: geekjobs/forms.py:34 geekjobs/templates/new.html.py:69
+msgid "Remote"
+msgstr "Trabajo remoto"
+
+#: geekjobs/forms.py:35 geekjobs/templates/new.html.py:83
+msgid "Salary"
+msgstr "Sueldo"
+
+#: geekjobs/forms.py:36
+msgid "Job Description"
+msgstr "Descripción de la oferta"
+
+#: geekjobs/forms.py:37 geekjobs/templates/new.html.py:116
+msgid "How do people apply for this job?"
+msgstr "¿Cómo solicitar esta oferta de empleo?"
+
+#: geekjobs/forms.py:38 geekjobs/templates/new.html.py:136
+msgid "Company Name"
+msgstr "Nombre de la empresa"
+
+#: geekjobs/forms.py:39
+msgid "Job URL"
+msgstr "URL de la oferta"
+
+#: geekjobs/forms.py:40
+msgid "Email"
+msgstr "Email"
+
+#: geekjobs/settings.py:119
+msgid "English"
+msgstr "Inglés"
+
+#: geekjobs/settings.py:120
+msgid "Spanish"
+msgstr "Español"
+
+#: geekjobs/templates/base.html:37
+msgid "Post a Job - 50€"
+msgstr "Publica una oferta - 50€"
+
+#: geekjobs/templates/base.html:50
+msgid "Contact"
+msgstr "Contacto"
+
+#: geekjobs/templates/base.html:53
+msgid "Terms"
+msgstr "Condiciones del servicio"
+
+#: geekjobs/templates/base.html:56
+msgid "Privacy"
+msgstr "Privacidad"
+
+#: geekjobs/templates/index.html:16
+#, fuzzy
+#| msgid "All jobs in"
+msgid "All jobs in "
+msgstr "Todas las ofertas en "
+
+#: geekjobs/templates/new.html:12
+msgid "First, tell us about the position"
+msgstr "Cuentanos sobre la oferta"
+
+#: geekjobs/templates/new.html:19
+#, fuzzy
+#| msgid "Job Title"
+msgid "Job title"
+msgstr "Título de la oferta"
+
+#: geekjobs/templates/new.html:23
+msgid "\"Technical Writer\" or \"Python Programmer\""
+msgstr "\"Editor Técnico\" o \"Analista Programador Python\""
+
+#: geekjobs/templates/new.html:41
+msgid "\"San Francisco\", \"Houston\""
+msgstr "\"Madrid\" o \"Barcelona\""
+
+#: geekjobs/templates/new.html:59
+msgid "Select a state"
+msgstr "Selecciona una comunidad autónoma"
+
+#: geekjobs/templates/new.html:73
+msgid "Allow telecommuting?"
+msgstr "¿Se permite trabajar de forma remota?"
+
+#: geekjobs/templates/new.html:87
+msgid "Optional. $100,000-110,000"
+msgstr "Opcional. 50.000€-70.000€"
+
+#: geekjobs/templates/new.html:99
+msgid "Job description"
+msgstr "Descripción de la oferta"
+
+#: geekjobs/templates/new.html:118
+msgid "Example: Send a resume to jane@company.com"
+msgstr "Ejemplo: Envía tu cv a maria@empresa.com"
+
+#: geekjobs/templates/new.html:128
+msgid "Tell us about your company"
+msgstr "Cuentanos sobre la empresa"
+
+#: geekjobs/templates/new.html:140
+msgid "Enter your company or organization´s name."
+msgstr "Introduce el nombre de tu empresa u organización"
+
+#: geekjobs/templates/new.html:158
+msgid "Example: https://mybusiness.com/careers/apply"
+msgstr "Ejemplo: https://mybusiness.com/careers/apply"
+
+#: geekjobs/templates/new.html:176
+msgid "This is where we’ll send your confirmation email."
+msgstr "Aquí enviaremos el correo electrónico de confirmación."
+
+#: geekjobs/templates/new.html:187
+msgid "Preview your Ad"
+msgstr "Vista preliminar"
+
+#: geekjobs/templates/review.html:9
+msgid "Review your ad and make changes if necessary."
+msgstr "Revisa tu anuncio"
+
+#: geekjobs/templates/review.html:10
+msgid "Step 2: Review your Ad"
+msgstr "Paso 2: Revisa tu anuncio"
+
+#: geekjobs/templates/review.html:15
+msgid "at"
+msgstr "en"
+
+#: geekjobs/templates/review.html:22
+msgid "Posted:"
+msgstr "Publicado:"
+
+#: geekjobs/templates/review.html:27
+msgid "Location:"
+msgstr "Lugar:"
+
+#: geekjobs/templates/review.html:32
+msgid "Job Description:"
+msgstr "Descripción de la oferta"
+
+#: geekjobs/templates/review.html:42
+msgid "How to apply:"
+msgstr "Como solicitar la oferta:"
+
+#: geekjobs/templates/review.html:52
+msgid "Pay for your Ad"
+msgstr "Paga por tu anuncio"

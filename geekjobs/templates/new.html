@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+
+{% block content %}
+<div class="row"><br><br></div>
+
+    <form method="POST" action="{% url 'new' %}">
+        {% csrf_token %}
+        <!-- Section 1 -->
+        <h4 class="m-b-3">{% trans "First, tell us about the position" %}</h4><br>
+        <!-- Job Title -->
+        {% if form.title.errors %}
+        <div class="form-group row has-error">
+        {% else %}
+        <div class="form-group row">
+        {% endif%}
+            <label for="{{form.title.id_for_label}}" class="col-sm-2 col-form-label">{% trans "Job title" %}</label>
+
+            <div class="col-sm-8">
+                {{form.title|add_class:'form-control'}}
+                <p class="form-text text-muted">{% trans '"Technical Writer" or "Python Programmer"' %}</p>
+            </div>
+
+            {% for error in form.title.errors %}
+            <p class="col-sm-2 bg-danger">{{error}}</p>
+            {% endfor %}
+        </div>
+
+        <!-- City -->
+        {% if form.city.errors %}
+        <div class="form-group row has-error">
+        {% else %}
+        <div class="form-group row">
+        {% endif%}
+            <label for="{{form.city.id_for_label}}" class="col-sm-2 col-form-label">{% trans "City" %}</label>
+
+            <div class="col-sm-8">
+                {{form.city|add_class:'form-control'}}
+                <p class="form-text text-muted">{% trans '"San Francisco", "Houston"' %}</p>
+            </div>
+
+            {% for error in form.city.errors %}
+            <p class="col-sm-2 bg-danger">{{error}}</p>
+            {% endfor %}
+        </div>
+
+        <!-- State -->
+        {% if form.state.errors %}
+        <div class="form-group row has-error">
+        {% else %}
+        <div class="form-group row">
+        {% endif%}
+            <label for="{{form.state.id_for_label}}" class="col-sm-2 col-form-label">{% trans "State" %}</label>
+
+            <div class="col-sm-8">
+                {{form.state|add_class:'form-control'}}
+                <p class="form-text text-muted">{% trans 'Select a state' %}</p>
+            </div>
+        </div>
+
+        <!-- Remote -->
+        {% if form.remote.errors %}
+        <div class="form-group row has-error">
+        {% else %}
+        <div class="form-group row">
+        {% endif%}
+            <label for="{{form.remote.id_for_label}}" class="col-sm-2 col-form-label">{% trans 'Remote' %}</label>
+
+            <div class="col-sm-8">
+                {{form.remote}}
+                <p class="form-text text-muted">{% trans 'Allow telecommuting?' %}</p>
+            </div>
+        </div>
+
+        <!-- Salary -->
+        {% if form.salary.errors %}
+        <div class="form-group row has-error">
+        {% else %}
+        <div class="form-group row">
+        {% endif%}
+            <label for="{{form.salary.id_for_label}}" class="col-sm-2 col-form-label">{% trans 'Salary' %}</label>
+
+            <div class="col-sm-8">
+                {{form.salary|add_class:'form-control'}}
+                <p class="form-text text-muted">{% trans 'Optional. $100,000-110,000' %}</p>
+            </div>
+
+            {% for error in form.salary.errors %}
+            <p class="col-sm-2 bg-danger">{{error}}</p>
+            {% endfor %}
+        </div>
+
+        <!-- Job description -->
+        <div class="form-group row m-b-3">
+            <div class="col-sm-10">
+                {% if form.description.errors %}
+                <label for="{{form.description.id_for_label}}" class="bg-danger">{% trans 'Job description' %}</label>
+                {% else %}
+                <label for="{{form.description.id_for_label}}">Job description</label>
+                {% endif%}
+
+                {{form.description|add_class:'form-control'}}
+                <trix-editor input="{{form.description.id_for_label}}" class="trix-content"></trix-editor>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        {% if form.instructions.errors %}
+        <div class="form-group row has-error">
+        {% else %}
+        <div class="form-group row">
+        {% endif%}
+            <div class="col-sm-10">
+                <label for="{{form.instructions.id_for_label}}" class="m-b-0">{% trans 'How do people apply for this job?' %}</label>
+                {{form.instructions|add_class:'form-control'}}
+                <p class="form-text text-muted">{% trans 'Example: Send a resume to jane@company.com' %}</p>
+            </div>
+
+            {% for error in form.instructions.errors %}
+            <p class="col-sm-2 bg-danger">{{error}}</p>
+            {% endfor %}
+        </div>
+
+        <!-- Section 2 -->
+        <hr class="m-y-2">
+        <h4 class="m-b-3">{% trans 'Tell us about your company' %}</h4><br>
+
+        <!-- Company Name -->
+        {% if form.name.errors %}
+        <div class="form-group row has-error">
+        {% else %}
+        <div class="form-group row">
+        {% endif%}
+            <label for="{{form.name.id_for_label}}" class="col-sm-2 col-form-label">{% trans 'Company Name' %}</label>
+
+            <div class="col-sm-8">
+                {{form.name|add_class:'form-control'}}
+                <p class="form-text text-muted">{% trans 'Enter your company or organization´s name.' %}</p>
+            </div>
+
+            {% for error in form.name.errors %}
+            <p class="col-sm-2 bg-danger">{{error}}</p>
+            {% endfor %}
+        </div>
+
+        <!-- URL -->
+        {% if form.url.errors %}
+        <div class="form-group row has-error">
+        {% else %}
+        <div class="form-group row">
+        {% endif%}
+            <label for="{{form.url.id_for_label}}" class="col-sm-2 col-form-label">URL</label>
+
+            <div class="col-sm-8">
+                {{form.url|add_class:'form-control'}}
+                <p class="form-text text-muted">{% trans 'Example: https://mybusiness.com/careers/apply' %}</p>
+            </div>
+
+            {% for error in form.url.errors %}
+            <p class="col-sm-2 bg-danger">{{error}}</p>
+            {% endfor %}
+        </div>
+
+        <!-- Email -->
+        {% if form.email.errors %}
+        <div class="form-group row has-error">
+        {% else %}
+        <div class="form-group row">
+        {% endif%}
+            <label for="{{form.email.id_for_label}}" class="col-sm-2 col-form-label">Email</label>
+
+            <div class="col-sm-8">
+                {{form.email|add_class:'form-control'}}
+                <p class="form-text text-muted">{% trans 'This is where we’ll send your confirmation email.' %}</p>
+            </div>
+
+            {% for error in form.email.errors %}
+            <p class="col-sm-2 bg-danger">{{error}}</p>
+            {% endfor %}
+        </div>
+
+        <!-- Submit button -->
+        <div class="form-group row m-y-1">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">{% trans 'Preview your Ad' %}</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

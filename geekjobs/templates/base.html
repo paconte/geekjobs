@@ -1,0 +1,69 @@
+{% load staticfiles %}
+{% load js %}
+{% load i18n %}
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap-table.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'trix.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'custom.css' %}"/>
+  {% endblock %}
+
+  <title>{% block title %}Geek Jobs{% endblock %}</title>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-3"></div>
+
+        <div class="col-md-3">
+            <a href="{% url 'home' %}">
+                <img alt="Brand" src="{% static 'geekjobs.png' %}">
+            </a>
+        </div>
+
+        <div class="col-md-6" style="padding-top: 48px;">
+            <a href="{% url 'new' %}"><strong>{% trans "Post a Job - 50€" %}</strong></a>
+        </div>
+    </div>
+
+
+  {% block content %}{% endblock %}
+</div>
+
+
+    <div class="row">
+        <br><br>
+        <div class="col-md-4"></div>
+        <div class="col-md-1">
+            <a class="nav-link" href="mailto:john@johnwheeler.org">{% trans "Contact" %}</a>
+        </div>
+        <div class="col-md-1">
+            <a class="nav-link" href="/static/html/terms.html">{% trans "Terms" %}</a>
+        </div>
+        <div class="col-md-1">
+            <a class="nav-link" href="/static/html/privac<.html">{% trans "Privacy" %}</a>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+   <script src="{% static 'jquery-3.1.1.min.js' %}"></script>
+   <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+   <script src="{% static 'bootstrap-table.min.js' %}"></script>
+   <script src="{% static 'trix.js' %}"></script>
+   <script>
+        var jobs = {{ jobs | js }};
+   </script>
+   <script src="{% static 'custom.js' %}"></script>
+</body>
