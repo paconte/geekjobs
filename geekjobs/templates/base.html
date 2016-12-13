@@ -47,13 +47,13 @@
         <br><br>
         <div class="col-md-4"></div>
         <div class="col-md-1">
-            <a class="nav-link" href="mailto:john@johnwheeler.org">{% trans "Contact" %}</a>
+            <a class="nav-link" href="mailto:your@email.com">{% trans "Contact" %}</a>
         </div>
         <div class="col-md-1">
-            <a class="nav-link" href="/static/html/terms.html">{% trans "Terms" %}</a>
+            <a class="nav-link" href="{% url 'terms' %}">{% trans "Terms" %}</a>
         </div>
         <div class="col-md-1">
-            <a class="nav-link" href="/static/html/privac<.html">{% trans "Privacy" %}</a>
+            <a class="nav-link" href="{% url 'privacy' %}">{% trans "Privacy" %}</a>
         </div>
         <div class="col-md-4"></div>
     </div>

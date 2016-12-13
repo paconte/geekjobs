@@ -117,7 +117,8 @@ LANGUAGE_CODE = 'en-us'
 
 LANGUAGES = (
     ('en', _('English')),
-    ('es', _('Spanish'))
+    ('es', _('Spanish')),
+    ('de', _('German'))
 )
 
 LOCALE_PATHS = (

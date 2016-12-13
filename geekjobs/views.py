@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.template import loader
 from django.template import RequestContext
+from django.utils.translation import get_language_from_request
 
 from geekjobs.stackoverflow_parser import load_json_file
 from geekjobs.stackoverflow_parser import merge_json_jobs
@@ -42,3 +43,23 @@ def add_job(request):
             form.save()
             return redirect('home')
     return new(request)
+
+
+def terms(request):
+    lang = get_language_from_request(request, check_path=True)
+    html = 'terms.html'
+    if lang == 'es':
+        html = 'es_terms.html'
+    elif lang == 'de':
+        html = 'de_terms.html'
+    return render(request, html)
+
+
+def privacy(request):
+    lang = get_language_from_request(request, check_path=True)
+    html = 'privacy.html'
+    if lang == 'es':
+        html = 'es_privacy.html'
+    elif lang == 'de':
+        html = 'de_privacy.html'
+    return render(request, html)
