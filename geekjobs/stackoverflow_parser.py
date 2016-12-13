@@ -2,35 +2,55 @@ import feedparser
 import time
 import math
 import json
-
-# from geekjobs.constants import bundeslander2
-# from . import constants
-
+from collections import OrderedDict
 
 # add below line to crontab:
 # 0 0,6,12,18 * * * /path/to/mycommand
 stackoverflow_json_file = 'stackoverflow_jobs.json'
 
-bundeslander2 = {'DE': 'Germany', 'REMOTE': 'Remote', 'BW': 'Baden-Wuerttemberg', 'BY': 'Bayern', 'BE': 'Berlin',
-                 'BB': 'Brandenburg', 'HB': 'Bremen', 'HH': 'Hamburg', 'HE': 'Hessen', 'MV': 'Mecklenburg-Vorpommern',
-                 'NI': 'Niedersachsen', 'NW': 'Nordrhein-Westfalen', 'RP': 'Rheinland-Pfalz', 'SL': 'Saarland',
-                 'SN': 'Sachsen', 'ST': 'Sachen-Anhalt', 'SH': 'Schleswig-Holstein', 'TH': 'Thuringia'}
+de_states = {'DE': 'Germany', 'REMOTE': 'Remote', 'BW': 'Baden-Wuerttemberg', 'BY': 'Bayern', 'BE': 'Berlin',
+             'BB': 'Brandenburg', 'HB': 'Bremen', 'HH': 'Hamburg', 'HE': 'Hessen', 'MV': 'Mecklenburg-Vorpommern',
+             'NI': 'Niedersachsen', 'NW': 'Nordrhein-Westfalen', 'RP': 'Rheinland-Pfalz', 'SL': 'Saarland',
+             'SN': 'Sachsen', 'ST': 'Sachen-Anhalt', 'SH': 'Schleswig-Holstein', 'TH': 'Thuringia'}
+
+de_states_sorted = OrderedDict(
+        [('DE', 'Germany'), ('REMOTE', 'Remote'), ('BW', 'Baden-Württemberg'), ('BY', 'Bayern'), ('BE', 'Berlin'),
+         ('BB', 'Brandenburg'), ('HB', 'Bremen'), ('HH', 'Hamburg'), ('HE', 'Hessen'), ('MV', 'Mecklenburg-Vorpommern'),
+         ('NI', 'Niedersachsen'), ('NW', 'Nordrhein-Westfalen'), ('RP', 'Rheinland-Pfalz'), ('SL', 'Saarland'),
+         ('SN', 'Sachsen'), ('ST', 'Sachen-Anhalt'), ('SH', 'Schleswig-Holstein'), ('TH', 'Thüringen')])
+
+DE_STATE_CHOICES = (('Germany', 'Germany'), ('BW', 'Baden-Württemberg'), ('BY', 'Bayern'), ('BE', 'Berlin'),
+                    ('BB', 'Brandenburg'), ('HB', 'Bremen'), ('HH', 'Hamburg'), ('HE', 'Hessen'),
+                    ('MV', 'Mecklenburg-Vorpommern'), ('NI', 'Niedersachsen'), ('NW', 'Nordrhein-Westfalen'),
+                    ('RP', 'Rheinland-Pfalz'), ('SL', 'Saarland'), ('SN', 'Sachsen'), ('ST', 'Sachen-Anhalt'),
+                    ('SH', 'Schleswig-Holstein'), ('TH', 'Thüringen'))
 
 
-def _generate_title(cls):
-    main = cls.title + ' at ' + cls.name
+def _get_title(job_item):
+    """
+    Given a JobItem class returns a string with the title of a job offer
+
+    :param job_item: JobItem class
+    :return: a string representing the title of the job offer
+    """
+    main = job_item.title + ' at ' + job_item.name
     location = ' (Germany)'
     remote = ''
-    if cls.city:
-        location = ' (' + cls.city + ', Germany)'
-    if cls.remote:
+    if job_item.city:
+        location = ' (' + job_item.city + ', Germany)'
+    if job_item.remote:
         remote = ' (allows remote)'
 
     return main + location + remote
 
 
-def _generate_updated_parsed(cls):
-    return cls.published.timetuple()
+def _get_updated_parsed(job_item):
+    """
+
+    :param job_item:
+    :return:
+    """
+    return job_item.published.timetuple()
 
 
 def _generate_published(cls):
@@ -55,8 +75,8 @@ class JobItem:
 
     @classmethod
     def from_model_job(cls, job):
-        return cls(_generate_title(job), '', job.name, '',
-                   _generate_updated_parsed(job), job.description, job.url, job.instructions)
+        return cls(_get_title(job), '', job.name, '',
+                   _get_updated_parsed(job), job.description, job.url, job.instructions)
 
     def to_dict(self):
         result = dict()
@@ -73,6 +93,9 @@ class JobItem:
 
 
 class StackOverflowFeed:
+    """
+    Feeder of StackOverFlow to help fetching the remote jobs
+    """
     def __init__(self):
         self._url = "https://stackoverflow.com/jobs/feed"
         self._question_mark_added = False
@@ -82,17 +105,17 @@ class StackOverflowFeed:
             self._question_mar_added = True
             self._url += "?"
 
-    def add_bundesland(self, bundesland):
-        if bundesland == 'Remote':
-            return self.add_remote()
-        self.reset()
-        self._pre_add_parameter()
-        self._url += 'sort=i&' + 'l=' + bundesland + ',Germany' + '&d=20&u=Km'
-
-    def add_remote(self):
+    def _add_remote(self):
         self.reset()
         self._pre_add_parameter()
         self._url += 'r=true'
+
+    def add_state(self, state):
+        if state == 'Remote':
+            return self._add_remote()
+        self.reset()
+        self._pre_add_parameter()
+        self._url += 'sort=i&' + 'l=' + state + ',Germany' + '&d=20&u=Km'
 
     def reset(self):
         self._url = "https://stackoverflow.com/jobs/feed"
@@ -103,14 +126,20 @@ class StackOverflowFeed:
 
 def get_stackoverflow_jobs():
     result = dict()
-    for k, v in bundeslander2.items():
-        result[k] = get_stackoverflow_bundesland(v)
+    for k, v in de_states.items():
+        result[k] = get_stackoverflow_by_state(v)
     return result
 
 
-def get_stackoverflow_bundesland(value):
+def get_stackoverflow_by_state(state):
+    """
+    Fetch stackoverflow jobs for a given state and sort them
+
+    :param state: the state where to fetch the jobs
+    :return: sorted dictionary of jobs
+    """
     sofeed = StackOverflowFeed()
-    sofeed.add_bundesland(value)
+    sofeed.add_state(state)
     jobs = sofeed.parse()
     result = []
     for item in jobs["items"]:
@@ -126,13 +155,23 @@ def get_stackoverflow_bundesland(value):
 
 
 def _sort_job_help(t):
+    """
+    Auxiliar function
+    """
     if isinstance(t, time.struct_time):
         return list(t)
     else:
         return t
 
 
-def merge_json_jobs(dictA, dictB):
+def merge_dict_jobs(dictA, dictB):
+    """
+    Merge two dictionary of jobs into a single dictionary sorting the values.
+
+    :param dictA: dictionary with states as keys
+    :param dictB: dictionary with states as keys
+    :return: a dictionary with sorted content of dictA and dictB
+    """
     result = {}
     for k, v in dictA.items():
         list = dictA[k] + dictB[k]
@@ -141,52 +180,62 @@ def merge_json_jobs(dictA, dictB):
     return result
 
 
+def load_stackoverflow_jobs():
+    """
+    Load the local file with stackoverflow jobs into a python dictionary.
+
+    :return: dictionary with stackoverflow jobs
+    """
+    with open(stackoverflow_json_file) as json_data:
+        result = json.load(json_data)
+        return result
+
+
+def write_stackoverflow_jobs(data):
+    """
+    Write stackoverflow jobs into a local file.
+    """
+    with open(stackoverflow_json_file, 'w') as outfile:
+        json.dump(data, outfile, indent=4)
+
+
+def download_stackoverflow_jobs():
+    """
+    Get all stackoverflow jobs and write them in a local file
+    """
+    data = get_stackoverflow_jobs()
+    write_stackoverflow_jobs(data)
+
+
 def get_raw():
     sofeed = StackOverflowFeed()
-    sofeed.add_bundesland('DE')
+    sofeed.add_state('DE')
     jobs = sofeed.parse()
     data = jobs["items"]
     with open('raw.json', 'w') as outfile:
         json.dump(data, outfile, indent=4)
 
 
-def write_json(data):
-    with open(stackoverflow_json_file, 'w') as outfile:
-        json.dump(data, outfile, indent=4)
-
-
-def load_json_file():
-    with open(stackoverflow_json_file) as json_data:
-        result = json.load(json_data)
-        return result
-
-
 def test_bundesland():
-    jobs = get_stackoverflow_bundesland(bundeslander2['BY'])
+    jobs = get_stackoverflow_by_state(de_states['BY'])
     for job in jobs:
         # print(job['title'] + ' -- ' + job['location'] + ' -- ' + job['published'])
         print(job['published'])
 
 
-def test_write():
-    # data = get_stackoverflow_bundesland(bundeslander['BY'])
-    data = get_stackoverflow_jobs()
-    write_json(data)
-
-
 def test_urls():
     sofeed = StackOverflowFeed()
-    for k, v in bundeslander2.items():
-        sofeed.add_bundesland(v)
+    for k, v in de_states.items():
+        sofeed.add_state(v)
         print(sofeed._url)
 
 
 def test_load():
-    a = load_json_file()
+    a = load_stackoverflow_jobs()
     print(a)
 
 #test_bundesland()
-test_write()
+download_stackoverflow_jobs()
 #test_urls()
 #test_load()
 

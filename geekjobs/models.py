@@ -1,6 +1,6 @@
 from django.db import models
-from geekjobs.constants import DE_STATE_CHOICES
-from geekjobs.stackoverflow_parser import bundeslander2
+from geekjobs.stackoverflow_parser import DE_STATE_CHOICES
+from geekjobs.stackoverflow_parser import de_states
 from geekjobs.stackoverflow_parser import JobItem
 
 
@@ -18,10 +18,10 @@ class Job(models.Model):
     published = models.DateTimeField(auto_now_add=True)
 
 
-def get_state_dict():
+def load_model_jobs():
     result = dict()
     jobs = Job.objects.all()
-    for k, v in bundeslander2.items():
+    for k, v in de_states.items():
         result[k] = []
         for job in jobs:
             if job.state == k:

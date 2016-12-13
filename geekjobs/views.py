@@ -5,21 +5,20 @@ from django.template import loader
 from django.template import RequestContext
 from django.utils.translation import get_language_from_request
 
-from geekjobs.stackoverflow_parser import load_json_file
-from geekjobs.stackoverflow_parser import merge_json_jobs
-from geekjobs.constants import bundeslander
-from geekjobs.models import get_state_dict
-
-from .forms import JobForm
+from geekjobs.stackoverflow_parser import load_stackoverflow_jobs
+from geekjobs.stackoverflow_parser import merge_dict_jobs
+from geekjobs.stackoverflow_parser import de_states_sorted
+from geekjobs.models import load_model_jobs
+from geekjobs.forms import JobForm
 
 default_region = 'DE'
 
 
 def index(request, region=default_region):
-    stackoverflow_jobs = load_json_file()
-    geekjobs = get_state_dict()
-    jobs = merge_json_jobs(stackoverflow_jobs, geekjobs)
-    context = {'bundeslander': bundeslander, 'state': 'all states', 'jobs': jobs[region]}
+    stackoverflow_jobs = load_stackoverflow_jobs()
+    geekjobs = load_model_jobs()
+    jobs = merge_dict_jobs(stackoverflow_jobs, geekjobs)
+    context = {'bundeslander': de_states_sorted, 'state': 'all states', 'jobs': jobs[region]}
     template = loader.get_template('index.html')
     return HttpResponse(template.render(context))
 
