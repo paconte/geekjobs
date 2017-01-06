@@ -2,6 +2,7 @@ import feedparser
 import time
 import math
 import json
+import os
 from collections import OrderedDict
 
 # add below line to crontab:
@@ -203,6 +204,10 @@ def download_stackoverflow_jobs():
     """
     Get all stackoverflow jobs and write them in a local file
     """
+    try:
+        os.remove(stackoverflow_json_file)
+    except FileNotFoundError:
+        pass
     data = get_stackoverflow_jobs()
     write_stackoverflow_jobs(data)
 
