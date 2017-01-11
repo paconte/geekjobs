@@ -6,7 +6,11 @@
 
 <div id="states">
     {% for key, bundesland in bundeslander.items %}
-    <a class="nav-link text-uppercase" href="{{key}}">{{bundesland}}</a>
+      {% if key == country %}
+          <a class="nav-link text-uppercase active" href="{{key}}">{{bundesland}}</a>
+        {% else %}
+          <a class="nav-link text-uppercase" href="{{key}}">{{bundesland}}</a>
+      {% endif %}
     {% endfor %}
 </div>
 

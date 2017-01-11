@@ -108,7 +108,7 @@ msgstr "\"Madrid\" o \"Barcelona\""
 
 #: geekjobs/templates/new.html:59
 msgid "Select a state"
-msgstr "Selecciona una comunidad autónoma"
+msgstr "Selecciona un país"
 
 #: geekjobs/templates/new.html:73
 msgid "Allow telecommuting?"

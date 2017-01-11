@@ -27,6 +27,23 @@ DE_STATE_CHOICES = (('Germany', 'Germany'), ('BW', 'Baden-Württemberg'), ('BY',
                     ('SH', 'Schleswig-Holstein'), ('TH', 'Thüringen'))
 
 
+eu_countries = {'EU': 'Europe', 'AT': 'Austria', 'BE': 'Belgium', 'CH': 'Switzerland', 'DE': 'Germany', 'DK': 'Denmark',
+                'FR': 'France', 'IT': 'Italy', 'LU': 'Luxembourg', 'NL': 'Netherlands', 'PL': 'Poland', 'SE': 'Sweden',
+                'SP': 'Spain', 'UK': 'United Kingdom', 'REMOTE': 'Remote'}
+
+eu_countries_sorted = OrderedDict(
+    [('EU', 'Europe'), ('AT', 'Austria'), ('BE', 'Belgium'), ('CH', 'Switzerland'), ('DE', 'Germany'),
+     ('DK', 'Denmark'), ('FR', 'France'), ('IT', 'Italy'), ('LU', 'Luxembourg'), ('NL', 'Netherlands'),
+     ('PL', 'Poland'), ('SE', 'Sweden'), ('SP', 'Spain'), ('UK', 'United Kingdom'), ('REMOTE', 'Remote')]
+)
+
+EU_COUNTRIES_CHOICES = (
+    ('AT', 'Austria'), ('BE', 'Belgium'), ('CH', 'Switzerland'), ('DE', 'Germany'), ('DK', 'Denmark'), ('FR', 'France'),
+    ('IT', 'Italy'), ('LU', 'Luxembourg'), ('NL', 'Netherlands'), ('PL', 'Poland'), ('SE', 'Sweden'), ('SP', 'Spain'),
+    ('UK', 'United Kingdom')
+)
+
+
 def _get_title(job_item):
     """
     Given a JobItem class returns a string with the title of a job offer
@@ -35,10 +52,14 @@ def _get_title(job_item):
     :return: a string representing the title of the job offer
     """
     main = job_item.title + ' at ' + job_item.name
-    location = ' (Germany)'
+    location = ' ()'
     remote = ''
-    if job_item.city:
-        location = ' (' + job_item.city + ', Germany)'
+    if job_item.city and job_item.state:
+        location = ' (%s , %s)' % (job_item.city, eu_countries[job_item.state])
+    elif job_item.city:
+        location = ' ( %s)' % job_item.city
+    elif job_item.state:
+        location = ' ( %s)' % eu_countries[job_item.state]
     if job_item.remote:
         remote = ' (allows remote)'
 
@@ -118,6 +139,13 @@ class StackOverflowFeed:
         self._pre_add_parameter()
         self._url += 'sort=i&' + 'l=' + state + ',Germany' + '&d=20&u=Km'
 
+    def add_country(self, country):
+        if country == 'Remote':
+            return self._add_remote()
+        self.reset()
+        self._pre_add_parameter()
+        self._url += 'sort=i&' + 'l=' + country + '&d=20&u=Km'
+
     def reset(self):
         self._url = "https://stackoverflow.com/jobs/feed"
 
@@ -127,12 +155,12 @@ class StackOverflowFeed:
 
 def get_stackoverflow_jobs():
     result = dict()
-    for k, v in de_states.items():
+    for k, v in eu_countries_sorted.items():
         result[k] = get_stackoverflow_by_state(v)
     return result
 
 
-def get_stackoverflow_by_state(state):
+def get_stackoverflow_by_state(country):
     """
     Fetch stackoverflow jobs for a given state and sort them
 
@@ -140,7 +168,7 @@ def get_stackoverflow_by_state(state):
     :return: sorted dictionary of jobs
     """
     sofeed = StackOverflowFeed()
-    sofeed.add_state(state)
+    sofeed.add_country(country)
     jobs = sofeed.parse()
     result = []
     for item in jobs["items"]:
