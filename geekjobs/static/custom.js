@@ -34,8 +34,16 @@ $('#jobs-table').bootstrapTable({
     field: 'title',
     formatter: function rowFormatter(value, row, index) {
       // return row.title + " " + row.author
-      return '<address><a class="here"><strong>' + row.title
-      +  '</strong></a><br><small class="text-muted">' + row.author + ' | ' + row.days + ' days ago</small></address>'
+      if (row.featured) {
+          return '<address><a class="here active"><strong>' + row.title
+          +  '</strong></a><br><small class="text-muted">' + row.author + ' | '
+          + row.days + ' days ago</small></address>'
+      } else {
+          return '<address><a class="here"><strong>' + row.title
+          +  '</strong></a><br><small class="text-muted">' + row.author + ' | '
+          + row.days + ' days ago</small></address>'
+      }
+
     }
   }]
 });

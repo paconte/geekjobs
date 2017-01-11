@@ -49,5 +49,4 @@ def load_model_jobs():
                 job_list = result['REMOTE']
                 job_list.append(new_job.to_dict())
                 result['REMOTE'] = job_list
-    print(result['EU'])
     return result

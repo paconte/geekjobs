@@ -84,7 +84,7 @@ def _generate_days(timestruct):
 
 
 class JobItem:
-    def __init__(self, title, location, author, published, updated_parsed, summary, link, instructions):
+    def __init__(self, title, location, author, published, updated_parsed, summary, link, instructions, featured=False):
         self.title = title
         self.location = location
         self.author = author
@@ -94,11 +94,12 @@ class JobItem:
         self.link = link
         self.days = _generate_days(updated_parsed)
         self.instructions = instructions
+        self.featured = featured
 
     @classmethod
     def from_model_job(cls, job):
         return cls(_get_title(job), '', job.name, '',
-                   _get_updated_parsed(job), job.description, job.url, job.instructions)
+                   _get_updated_parsed(job), job.description, job.url, job.instructions, True)
 
     def to_dict(self):
         result = dict()
@@ -111,6 +112,7 @@ class JobItem:
         result['link'] = self.link
         result['days'] = self.days
         result['instructions'] = self.instructions
+        result['featured'] = self.featured
         return result
 
 
@@ -183,14 +185,16 @@ def get_stackoverflow_by_state(country):
     return sorted_result
 
 
-def _sort_job_help(t):
+def _sort_job_help(t, featured):
     """
     Auxiliar function
     """
+    result = t
     if isinstance(t, time.struct_time):
-        return list(t)
-    else:
-        return t
+        result = list(t)
+    if featured:
+        result.insert(3, 99)
+    return result
 
 
 def merge_dict_jobs(dictA, dictB):
@@ -204,7 +208,7 @@ def merge_dict_jobs(dictA, dictB):
     result = {}
     for k, v in dictA.items():
         list = dictA[k] + dictB[k]
-        sorted_list = sorted(list, key=lambda t: _sort_job_help(t['updated_parsed']), reverse=True)
+        sorted_list = sorted(list, key=lambda t: _sort_job_help(t['updated_parsed'], t['featured']), reverse=True)
         result[k] = sorted_list
     return result
 
