@@ -1,8 +1,12 @@
+import stripe
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.template import loader
 from django.utils.translation import get_language_from_request
+from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 
 from geekjobs.stackoverflow_parser import load_stackoverflow_jobs
 from geekjobs.stackoverflow_parser import merge_dict_jobs
@@ -26,7 +30,11 @@ def new(request):
     if request.method == 'POST':
         form = JobForm(request.POST)
         if form.is_valid():
-            context = {'form': form}
+            context = {'form': form,
+                       'country': eu_countries_sorted[form['state'].data],
+                       'stripe_data_image': static('geekjobs.png'),
+                       'stripe_data_key': settings.STRIPE_DATA_KEY,
+                       'stripe_data_description': _('Pay for your advertisement.')}
             return render(request, 'review.html', context)
     else:
         form = JobForm()
@@ -39,6 +47,15 @@ def add_job(request):
         form = JobForm(request.POST)
         if form.is_valid():
             form.save()
+            stripe.api_key = settings.STRIPE_TEST_API_KEY
+            token = request.POST['stripeToken']
+            # Charge the user's card:
+            charge = stripe.Charge.create(
+                amount=5000,
+                currency="eur",
+                description="Pay for your advertisement at geekjobs",
+                source=token,
+            )
             return redirect('home')
     return new(request)
 
