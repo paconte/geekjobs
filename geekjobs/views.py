@@ -32,6 +32,7 @@ def new(request):
         if form.is_valid():
             context = {'form': form,
                        'country': eu_countries_sorted[form['state'].data],
+                       'stripe_data_label': _('Pay for your Ad'),
                        'stripe_data_image': static('geekjobs.png'),
                        'stripe_data_key': settings.STRIPE_DATA_KEY,
                        'stripe_data_description': _('Pay for your advertisement.')}
