@@ -4,10 +4,12 @@ import math
 import json
 import os
 from collections import OrderedDict
+from django.conf import settings
 
 # add below line to crontab:
 # 0 0,6,12,18 * * * /path/to/mycommand
-stackoverflow_json_file = 'stackoverflow_jobs.json'
+#stackoverflow_json_file = 'stackoverflow_jobs.json'
+stackoverflow_json_file = os.path.join(settings.BASE_DIR, 'stackoverflow_jobs.json')
 
 de_states = {'DE': 'Germany', 'REMOTE': 'Remote', 'BW': 'Baden-Wuerttemberg', 'BY': 'Bayern', 'BE': 'Berlin',
              'BB': 'Brandenburg', 'HB': 'Bremen', 'HH': 'Hamburg', 'HE': 'Hessen', 'MV': 'Mecklenburg-Vorpommern',
