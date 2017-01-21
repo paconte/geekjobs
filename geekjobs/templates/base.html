@@ -12,11 +12,11 @@
   <meta name="author" content="">
 
   {% block css %}
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon2.ico' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap-table.min.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'trix.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'custom.css' %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'geekjobs/favicon2.ico' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'geekjobs/bootstrap/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'geekjobs/bootstrap-table.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'geekjobs/trix.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'geekjobs/custom.css' %}"/>
   {% endblock %}
 
   <title>{% block title %}Geek Jobs{% endblock %}</title>
@@ -30,7 +30,7 @@
 
         <div class="col-md-3">
             <a href="{% url 'home' %}">
-                <img alt="Brand" src="{% static 'geekjobs.png' %}">
+                <img alt="Brand" src="{% static 'geekjobs/geekjobs.png' %}">
             </a>
         </div>
 
@@ -59,12 +59,12 @@
         <div class="col-md-4"></div>
     </div>
 
-   <script src="{% static 'jquery-3.1.1.min.js' %}"></script>
-   <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-   <script src="{% static 'bootstrap-table.min.js' %}"></script>
-   <script src="{% static 'trix.js' %}"></script>
+   <script src="{% static 'geekjobs/jquery-3.1.1.min.js' %}"></script>
+   <script src="{% static 'geekjobs/bootstrap/js/bootstrap.min.js' %}"></script>
+   <script src="{% static 'geekjobs/bootstrap-table.min.js' %}"></script>
+   <script src="{% static 'geekjobs/trix.js' %}"></script>
    <script>
         var jobs = {{ jobs | js }};
    </script>
-   <script src="{% static 'custom.js' %}"></script>
+   <script src="{% static 'geekjobs/custom.js' %}"></script>
 </body>
