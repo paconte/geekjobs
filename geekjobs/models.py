@@ -13,8 +13,8 @@ class Job(models.Model):
     description = models.CharField(max_length=10000)
     instructions = models.CharField(max_length=300)
     name = models.CharField(max_length=100)
-    url = models.CharField(max_length=150)
-    email = models.CharField(max_length=150)
+    url = models.URLField()
+    email = models.EmailField()
     published = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
