@@ -215,7 +215,7 @@ def merge_dict_jobs(dictA, dictB):
     return result
 
 
-def load_stackoverflow_jobs():
+def _load_stackoverflow_jobs():
     """
     Load the local file with stackoverflow jobs into a python dictionary.
 
@@ -224,6 +224,33 @@ def load_stackoverflow_jobs():
     with open(stackoverflow_json_file) as json_data:
         result = json.load(json_data)
         return result
+
+
+def _check_stackoverflow_json(json):
+    if json['DE'] is None or json['UK'] is None:
+        return False
+    if len(json['DE']) < 1 or len(json['UK']) < 1:
+        return False
+    return True
+
+
+def load_stackoverflow_jobs():
+    """
+    Load the local file with stackoverflow jobs into a python dictionary.
+    If the file does not exists it try to create downloading it
+    If the file has no jobs download it again
+
+    :return: dictionary with stackoverflow jobs
+    """
+    for i in range(10):
+        try:
+            result = _load_stackoverflow_jobs()
+            if not _check_stackoverflow_json(result):
+                raise FileNotFoundError
+            break  # if works then do not retry to download the file!!
+        except FileNotFoundError:
+            download_stackoverflow_jobs()
+    return result
 
 
 def write_stackoverflow_jobs(data):
@@ -274,7 +301,7 @@ def test_load():
     print(a)
 
 #test_bundesland()
-download_stackoverflow_jobs()
+#download_stackoverflow_jobs()
 #test_urls()
 #test_load()
 
