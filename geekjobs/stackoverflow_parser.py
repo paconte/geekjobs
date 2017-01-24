@@ -227,9 +227,14 @@ def _load_stackoverflow_jobs():
 
 
 def _check_stackoverflow_json(json):
-    if json['DE'] is None or json['UK'] is None:
-        return False
-    if len(json['DE']) < 1 or len(json['UK']) < 1:
+    try:
+        if json['DE'] is None or json['UK'] is None:
+            return False
+        if not isinstance(json['DE'], list) or not isinstance(json['UK'], list):
+            return False
+        if len(json['DE']) < 1 or len(json['UK']) < 1:
+            return False
+    except KeyError:
         return False
     return True
 
@@ -299,9 +304,4 @@ def test_urls():
 def test_load():
     a = load_stackoverflow_jobs()
     print(a)
-
-#test_bundesland()
-#download_stackoverflow_jobs()
-#test_urls()
-#test_load()
 
