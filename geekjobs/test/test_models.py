@@ -25,6 +25,12 @@ class JobTestCase(TestCase):
         self.assertIs(job.salary, None)
         self.assertIsInstance(job.published, datetime)
 
+    def test_url(self):
+        """Jobs default field are correctly"""
+        job = Job.objects.get(title="Python dev")
+        job.url = "url"
+        job.save()
+
     def test_load_model_jobs(self):
         """Check loading jobs from database and converting them to jobItem"""
         jobs = load_model_jobs()
