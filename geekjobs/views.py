@@ -11,6 +11,8 @@ from django.conf import settings
 from geekjobs.stackoverflow_parser import load_stackoverflow_jobs
 from geekjobs.stackoverflow_parser import merge_dict_jobs
 from geekjobs.stackoverflow_parser import eu_countries_sorted
+from geekjobs.stackoverflow_parser import eu_countries_trans
+
 from geekjobs.models import load_model_jobs
 from geekjobs.forms import JobForm
 
@@ -21,7 +23,7 @@ def index(request, region=default_region):
     stackoverflow_jobs = load_stackoverflow_jobs()
     geekjobs = load_model_jobs()
     jobs = merge_dict_jobs(stackoverflow_jobs, geekjobs)
-    context = {'bundeslander': eu_countries_sorted, 'state': 'all states', 'jobs': jobs[region], 'country': region}
+    context = {'bundeslander': eu_countries_sorted, 'jobs': jobs[region], 'country': eu_countries_trans[region]}
     template = loader.get_template('index.html')
     return HttpResponse(template.render(context))
 

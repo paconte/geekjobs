@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-12 10:00+0000\n"
+"POT-Creation-Date: 2017-01-27 16:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,11 +28,11 @@ msgstr "Ciudad"
 
 #: geekjobs/forms.py:33 geekjobs/templates/new.html:55
 msgid "State"
-msgstr "Comunidad Autónoma"
+msgstr "País"
 
-#: geekjobs/forms.py:34 geekjobs/templates/new.html:69
+#: geekjobs/forms.py:34 geekjobs/stackoverflow_parser.py:40
 msgid "Remote"
-msgstr "Trabajo remoto"
+msgstr "Remoto"
 
 #: geekjobs/forms.py:35 geekjobs/templates/new.html:83
 msgid "Salary"
@@ -58,38 +58,92 @@ msgstr "URL de la oferta"
 msgid "Email"
 msgstr "Email"
 
-#: geekjobs/settings.py:119
+#: geekjobs/settings/prod_settings.py:125
 msgid "English"
 msgstr "Inglés"
 
-#: geekjobs/settings.py:120
+#: geekjobs/settings/prod_settings.py:126
 msgid "Spanish"
 msgstr "Español"
 
-#: geekjobs/settings.py:121
+#: geekjobs/settings/prod_settings.py:127
 msgid "German"
+msgstr "Alemán"
+
+#: geekjobs/stackoverflow_parser.py:37
+msgid "Europe"
+msgstr "Europa"
+
+#: geekjobs/stackoverflow_parser.py:37
+msgid "Austria"
 msgstr ""
 
-#: geekjobs/templates/base.html:37
+#: geekjobs/stackoverflow_parser.py:37
+msgid "Belgium"
+msgstr "Bélgica"
+
+#: geekjobs/stackoverflow_parser.py:37
+msgid "Switzerland"
+msgstr "Suiza"
+
+#: geekjobs/stackoverflow_parser.py:38
+msgid "Germany"
+msgstr "Alemania"
+
+#: geekjobs/stackoverflow_parser.py:38
+msgid "Denmark"
+msgstr "Dinamarca"
+
+#: geekjobs/stackoverflow_parser.py:38
+msgid "France"
+msgstr "Francia"
+
+#: geekjobs/stackoverflow_parser.py:38
+msgid "Italy"
+msgstr "Italia"
+
+#: geekjobs/stackoverflow_parser.py:39
+msgid "Luxembourg"
+msgstr "Luxemburgo"
+
+#: geekjobs/stackoverflow_parser.py:39
+msgid "Netherlands"
+msgstr "Holanda"
+
+#: geekjobs/stackoverflow_parser.py:39
+msgid "Poland"
+msgstr "Polonia"
+
+#: geekjobs/stackoverflow_parser.py:39
+msgid "Sweden"
+msgstr "Suecia"
+
+#: geekjobs/stackoverflow_parser.py:40
+msgid "Spain"
+msgstr "España"
+
+#: geekjobs/stackoverflow_parser.py:40
+msgid "United Kingdom"
+msgstr "Reino Unido"
+
+#: geekjobs/templates/base.html:38
 msgid "Post a Job - 50€"
 msgstr "Publica una oferta - 50€"
 
-#: geekjobs/templates/base.html:50
+#: geekjobs/templates/base.html:51
 msgid "Contact"
 msgstr "Contacto"
 
-#: geekjobs/templates/base.html:53
+#: geekjobs/templates/base.html:54
 msgid "Terms"
 msgstr "Condiciones del servicio"
 
-#: geekjobs/templates/base.html:56
+#: geekjobs/templates/base.html:57
 msgid "Privacy"
 msgstr "Privacidad"
 
 #: geekjobs/templates/index.html:20
-#, fuzzy
-#| msgid "All jobs in"
-msgid "All jobs in "
+msgid "All jobs in"
 msgstr "Todas las ofertas en "
 
 #: geekjobs/templates/new.html:12
@@ -97,8 +151,6 @@ msgid "First, tell us about the position"
 msgstr "Cuentanos sobre la oferta"
 
 #: geekjobs/templates/new.html:19
-#, fuzzy
-#| msgid "Job Title"
 msgid "Job title"
 msgstr "Título de la oferta"
 
@@ -113,6 +165,10 @@ msgstr "\"Madrid\" o \"Barcelona\""
 #: geekjobs/templates/new.html:59
 msgid "Select a state"
 msgstr "Selecciona un país"
+
+#: geekjobs/templates/new.html:69
+msgid "Remote2"
+msgstr "Trabajo remoto"
 
 #: geekjobs/templates/new.html:73
 msgid "Allow telecommuting?"
@@ -178,11 +234,11 @@ msgstr "Descripción de la oferta"
 msgid "How to apply:"
 msgstr "Como solicitar la oferta:"
 
-#: geekjobs/templates/review.html:52
+#: geekjobs/templates/review.html:53 geekjobs/views.py:37
 msgid "Pay for your Ad"
 msgstr "Paga por tu anuncio"
 
-#: geekjobs/views.py:34
+#: geekjobs/views.py:40
 #, fuzzy
 #| msgid "Pay for your Ad"
 msgid "Pay for your advertisement."

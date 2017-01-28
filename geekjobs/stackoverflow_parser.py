@@ -5,6 +5,7 @@ import json
 import os
 from collections import OrderedDict
 from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
 
 # add below line to crontab:
 # 0 0,6,12,18 * * * /path/to/mycommand
@@ -32,6 +33,11 @@ DE_STATE_CHOICES = (('Germany', 'Germany'), ('BW', 'Baden-Württemberg'), ('BY',
 eu_countries = {'EU': 'Europe', 'AT': 'Austria', 'BE': 'Belgium', 'CH': 'Switzerland', 'DE': 'Germany', 'DK': 'Denmark',
                 'FR': 'France', 'IT': 'Italy', 'LU': 'Luxembourg', 'NL': 'Netherlands', 'PL': 'Poland', 'SE': 'Sweden',
                 'SP': 'Spain', 'UK': 'United Kingdom', 'REMOTE': 'Remote'}
+
+eu_countries_trans = {'EU': _('Europe'), 'AT': _('Austria'), 'BE': _('Belgium'), 'CH': _('Switzerland'),
+                      'DE': _('Germany'), 'DK': _('Denmark'), 'FR': _('France'), 'IT': _('Italy'),
+                      'LU': _('Luxembourg'), 'NL': _('Netherlands'), 'PL': _('Poland'), 'SE': _('Sweden'),
+                      'SP': _('Spain'), 'UK': _('United Kingdom'), 'REMOTE': _('Remote')}
 
 eu_countries_sorted = OrderedDict(
     [('EU', 'Europe'), ('AT', 'Austria'), ('BE', 'Belgium'), ('CH', 'Switzerland'), ('DE', 'Germany'),
