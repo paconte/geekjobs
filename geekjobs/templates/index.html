@@ -5,11 +5,11 @@
 <div class="row"><br><br></div>
 
 <div id="states">
-    {% for key, bundesland in bundeslander.items %}
-      {% if key == country %}
-          <a class="nav-link text-uppercase active" href="{{key}}">{{bundesland}}</a>
+    {% for key, value in countries.items %}
+      {% if key == region %}
+          <a class="nav-link text-uppercase active" href="{{key}}">{% trans value %}</a>
         {% else %}
-          <a class="nav-link text-uppercase" href="{{key}}">{% trans bundesland %}</a>
+          <a class="nav-link text-uppercase" href="{{key}}">{% trans value %}</a>
       {% endif %}
     {% endfor %}
 </div>
@@ -17,7 +17,7 @@
 <hr>
 
 
-<h6>{% trans 'All jobs in' %} {{country}}</h6>
+<h6>{% trans 'All jobs in' %} {% trans country %}</h6>
 
 <table id="jobs-table"></table>
 {% endblock %}
