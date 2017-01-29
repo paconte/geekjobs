@@ -8,7 +8,26 @@
 
     <form method="POST" action="{% url 'new' %}">
         {% csrf_token %}
+
+        <!-- section 0 -->
+        <h4 class="m-b-3">{% trans 'Choose post type' %}</h4><br>
+        <label class="btn active">
+          <input type="radio" name='purchase' checked>
+            <span>50€</span>
+            <p class="form-text">{% trans "Job post" %}</p>
+            <p class="form-text text-muted">{% trans "for 30 days" %}</p>
+        </label>
+        <label class="btn disabled">
+            <input type="radio" name="purchase" disabled>
+            <span>{% trans "Free" %}</span>
+            <p class="form-text">{% trans "Internship post" %}</p>
+            <p class="form-text text-muted">{% trans "for 30 days" %}</p>
+        </label>
+
+        <br>
+
         <!-- Section 1 -->
+        <hr class="m-y-2">
         <h4 class="m-b-3">{% trans "First, tell us about the position" %}</h4><br>
         <!-- Job Title -->
         {% if form.title.errors %}

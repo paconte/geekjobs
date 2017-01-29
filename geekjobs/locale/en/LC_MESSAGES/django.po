@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-03 10:21+0100\n"
+"POT-Creation-Date: 2017-02-03 16:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Job Title"
 msgstr ""
 
-#: geekjobs/forms.py:32 geekjobs/templates/new.html:37
+#: geekjobs/forms.py:32 geekjobs/templates/new.html:56
 msgid "City"
 msgstr ""
 
@@ -33,7 +33,7 @@ msgstr ""
 msgid "Remote"
 msgstr ""
 
-#: geekjobs/forms.py:35 geekjobs/templates/new.html:83
+#: geekjobs/forms.py:35 geekjobs/templates/new.html:102
 msgid "Salary"
 msgstr ""
 
@@ -41,11 +41,11 @@ msgstr ""
 msgid "Job Description"
 msgstr ""
 
-#: geekjobs/forms.py:37 geekjobs/templates/new.html:116
+#: geekjobs/forms.py:37 geekjobs/templates/new.html:135
 msgid "How do people apply for this job?"
 msgstr ""
 
-#: geekjobs/forms.py:38 geekjobs/templates/new.html:136
+#: geekjobs/forms.py:38 geekjobs/templates/new.html:155
 msgid "Company Name"
 msgstr ""
 
@@ -125,19 +125,19 @@ msgstr ""
 msgid "United Kingdom"
 msgstr ""
 
-#: geekjobs/templates/base.html:38
-msgid "Post a Job - 50€"
+#: geekjobs/templates/base.html:39
+msgid "-- Post a Job --"
 msgstr ""
 
-#: geekjobs/templates/base.html:51
+#: geekjobs/templates/base.html:52
 msgid "Contact"
 msgstr ""
 
-#: geekjobs/templates/base.html:54
+#: geekjobs/templates/base.html:53
 msgid "Terms"
 msgstr ""
 
-#: geekjobs/templates/base.html:57
+#: geekjobs/templates/base.html:54
 msgid "Privacy"
 msgstr ""
 
@@ -145,67 +145,87 @@ msgstr ""
 msgid "All jobs in"
 msgstr "All jobs in "
 
-#: geekjobs/templates/new.html:12
-msgid "First, tell us about the position"
+#: geekjobs/templates/new.html:13
+msgid "Choose post type"
 msgstr ""
 
-#: geekjobs/templates/new.html:19
-msgid "Job title"
+#: geekjobs/templates/new.html:17
+msgid "Job post"
+msgstr ""
+
+#: geekjobs/templates/new.html:18 geekjobs/templates/new.html:24
+msgid "for 30 days"
+msgstr ""
+
+#: geekjobs/templates/new.html:22
+msgid "Free"
 msgstr ""
 
 #: geekjobs/templates/new.html:23
+msgid "Internship post"
+msgstr ""
+
+#: geekjobs/templates/new.html:31
+msgid "First, tell us about the position"
+msgstr ""
+
+#: geekjobs/templates/new.html:38
+msgid "Job title"
+msgstr ""
+
+#: geekjobs/templates/new.html:42
 msgid "\"Technical Writer\" or \"Python Programmer\""
 msgstr ""
 
-#: geekjobs/templates/new.html:41
+#: geekjobs/templates/new.html:60
 msgid "\"London\", \"Munich\""
 msgstr ""
 
-#: geekjobs/templates/new.html:55
+#: geekjobs/templates/new.html:74
 msgid "Country"
 msgstr ""
 
-#: geekjobs/templates/new.html:59
+#: geekjobs/templates/new.html:78
 msgid "Select a country"
 msgstr ""
 
-#: geekjobs/templates/new.html:69
+#: geekjobs/templates/new.html:88
 msgid "Remote2"
 msgstr "Remote"
 
-#: geekjobs/templates/new.html:73
+#: geekjobs/templates/new.html:92
 msgid "Allow telecommuting?"
 msgstr ""
 
-#: geekjobs/templates/new.html:87
+#: geekjobs/templates/new.html:106
 msgid "Optional. $100,000-110,000"
 msgstr ""
 
-#: geekjobs/templates/new.html:99
+#: geekjobs/templates/new.html:118
 msgid "Job description"
 msgstr ""
 
-#: geekjobs/templates/new.html:118
+#: geekjobs/templates/new.html:137
 msgid "Example: Send a resume to jane@company.com"
 msgstr ""
 
-#: geekjobs/templates/new.html:128
+#: geekjobs/templates/new.html:147
 msgid "Tell us about your company"
 msgstr ""
 
-#: geekjobs/templates/new.html:140
+#: geekjobs/templates/new.html:159
 msgid "Enter your company or organization´s name."
 msgstr ""
 
-#: geekjobs/templates/new.html:158
+#: geekjobs/templates/new.html:177
 msgid "Example: https://mybusiness.com/careers/apply"
 msgstr ""
 
-#: geekjobs/templates/new.html:176
+#: geekjobs/templates/new.html:195
 msgid "This is where we’ll send your confirmation email."
 msgstr ""
 
-#: geekjobs/templates/new.html:187
+#: geekjobs/templates/new.html:206
 msgid "Preview your Ad"
 msgstr ""
 
