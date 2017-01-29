@@ -45,5 +45,8 @@ $('#jobs-table').bootstrapTable({
       }
 
     }
-  }]
+  }],
+
+  onClickRow: function(row, element){
+        $(element[0]).find('.detail-icon').triggerHandler("click")}
 });
