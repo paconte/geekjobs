@@ -23,6 +23,7 @@
 </head>
 
 <body>
+
 <div class="container">
 
     <div class="row">
@@ -40,24 +41,20 @@
     </div>
 
 
-  {% block content %}{% endblock %}
+    {% block content %}{% endblock %}
+
 </div>
 
-
-    <div class="row">
-        <br><br>
-        <div class="col-md-4"></div>
-        <div class="col-md-1">
-            <a class="nav-link" href="mailto:your@email.com">{% trans "Contact" %}</a>
-        </div>
-        <div class="col-md-1">
-            <a class="nav-link" href="{% url 'terms' %}">{% trans "Terms" %}</a>
-        </div>
-        <div class="col-md-1">
-            <a class="nav-link" href="{% url 'privacy' %}">{% trans "Privacy" %}</a>
-        </div>
-        <div class="col-md-4"></div>
-    </div>
+<div id="footer">
+    <br><br>
+  <div class="container text-center">
+    <p>
+        <a class="nav-link" href="mailto:your@email.com">{% trans "Contact" %}</a>
+        <a class="nav-link" href="{% url 'terms' %}">{% trans "Terms" %}</a>
+        <a class="nav-link" href="{% url 'privacy' %}">{% trans "Privacy" %}</a>
+    </p>
+  </div>
+</div>
 
    <script src="{% static 'geekjobs/jquery-3.1.1.min.js' %}"></script>
    <script src="{% static 'geekjobs/bootstrap/js/bootstrap.min.js' %}"></script>
@@ -67,4 +64,5 @@
         var jobs = {{ jobs | js }};
    </script>
    <script src="{% static 'geekjobs/custom.js' %}"></script>
+
 </body>
