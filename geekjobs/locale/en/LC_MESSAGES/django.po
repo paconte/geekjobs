@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-27 16:13+0000\n"
+"POT-Creation-Date: 2017-02-03 10:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "City"
 msgstr ""
 
-#: geekjobs/forms.py:33 geekjobs/templates/new.html:55
+#: geekjobs/forms.py:33
 msgid "State"
 msgstr ""
 
@@ -158,11 +158,15 @@ msgid "\"Technical Writer\" or \"Python Programmer\""
 msgstr ""
 
 #: geekjobs/templates/new.html:41
-msgid "\"San Francisco\", \"Houston\""
+msgid "\"London\", \"Munich\""
+msgstr ""
+
+#: geekjobs/templates/new.html:55
+msgid "Country"
 msgstr ""
 
 #: geekjobs/templates/new.html:59
-msgid "Select a state"
+msgid "Select a country"
 msgstr ""
 
 #: geekjobs/templates/new.html:69
@@ -233,10 +237,10 @@ msgstr ""
 msgid "How to apply:"
 msgstr ""
 
-#: geekjobs/templates/review.html:53 geekjobs/views.py:37
+#: geekjobs/templates/review.html:53 geekjobs/views.py:38
 msgid "Pay for your Ad"
 msgstr ""
 
-#: geekjobs/views.py:40
+#: geekjobs/views.py:41
 msgid "Pay for your advertisement."
 msgstr ""

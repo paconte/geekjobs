@@ -38,7 +38,7 @@
 
             <div class="col-sm-8">
                 {{form.city|add_class:'form-control'}}
-                <p class="form-text text-muted">{% trans '"San Francisco", "Houston"' %}</p>
+                <p class="form-text text-muted">{% trans '"London", "Munich"' %}</p>
             </div>
 
             {% for error in form.city.errors %}
@@ -52,11 +52,11 @@
         {% else %}
         <div class="form-group row">
         {% endif%}
-            <label for="{{form.state.id_for_label}}" class="col-sm-2 col-form-label">{% trans "State" %}</label>
+            <label for="{{form.state.id_for_label}}" class="col-sm-2 col-form-label">{% trans "Country" %}</label>
 
             <div class="col-sm-8">
                 {{form.state|add_class:'form-control'}}
-                <p class="form-text text-muted">{% trans 'Select a state' %}</p>
+                <p class="form-text text-muted">{% trans 'Select a country' %}</p>
             </div>
         </div>
 
