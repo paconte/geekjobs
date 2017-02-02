@@ -47,8 +47,7 @@ os.environ['POSTGRES_PASSWORD'] = "your_db_passwd"
 if you need a secret_key you can run:
 
 ```
-python3 -c 'import random; import string; print "".join([random.SystemRandom().choice(string.digits + string.letters + string.punctuation) for i in range(100)])'
-
+python -c 'import random; import string; print "".join([random.SystemRandom().choice(string.digits + string.letters + string.punctuation) for i in range(100)])'
 ```
 
 ## Running the tests
