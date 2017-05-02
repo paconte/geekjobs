@@ -1,0 +1,267 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-03 16:51+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: geekjobs/forms.py:31
+msgid "Job Title"
+msgstr ""
+
+#: geekjobs/forms.py:32 geekjobs/templates/new.html:56
+msgid "City"
+msgstr "Stadt"
+
+#: geekjobs/forms.py:33
+msgid "State"
+msgstr "Land"
+
+#: geekjobs/forms.py:34 geekjobs/stackoverflow_parser.py:40
+msgid "Remote"
+msgstr ""
+
+#: geekjobs/forms.py:35 geekjobs/templates/new.html:102
+msgid "Salary"
+msgstr "Gehalt"
+
+#: geekjobs/forms.py:36
+msgid "Job Description"
+msgstr "Stellenbeschreibung"
+
+#: geekjobs/forms.py:37 geekjobs/templates/new.html:135
+msgid "How do people apply for this job?"
+msgstr "Wie kann man sich bewerben?"
+
+#: geekjobs/forms.py:38 geekjobs/templates/new.html:155
+msgid "Company Name"
+msgstr "Firmenname"
+
+#: geekjobs/forms.py:39
+msgid "Job URL"
+msgstr ""
+
+#: geekjobs/forms.py:40
+msgid "Email"
+msgstr ""
+
+#: geekjobs/settings/prod_settings.py:125
+msgid "English"
+msgstr "Englisch"
+
+#: geekjobs/settings/prod_settings.py:126
+msgid "Spanish"
+msgstr "Spanisch"
+
+#: geekjobs/settings/prod_settings.py:127
+msgid "German"
+msgstr "Deutsch"
+
+#: geekjobs/stackoverflow_parser.py:37
+msgid "Europe"
+msgstr "Europa"
+
+#: geekjobs/stackoverflow_parser.py:37
+msgid "Austria"
+msgstr "Österreich"
+
+#: geekjobs/stackoverflow_parser.py:37
+msgid "Belgium"
+msgstr "Belgien"
+
+#: geekjobs/stackoverflow_parser.py:37
+msgid "Switzerland"
+msgstr ""
+
+#: geekjobs/stackoverflow_parser.py:38
+msgid "Germany"
+msgstr "Deutschland"
+
+#: geekjobs/stackoverflow_parser.py:38
+msgid "Denmark"
+msgstr "Dänemark"
+
+#: geekjobs/stackoverflow_parser.py:38
+msgid "France"
+msgstr "Frankreich"
+
+#: geekjobs/stackoverflow_parser.py:38
+msgid "Italy"
+msgstr "Italien"
+
+#: geekjobs/stackoverflow_parser.py:39
+msgid "Luxembourg"
+msgstr "Luxemburg"
+
+#: geekjobs/stackoverflow_parser.py:39
+msgid "Netherlands"
+msgstr "Niederlande"
+
+#: geekjobs/stackoverflow_parser.py:39
+msgid "Poland"
+msgstr "Polen"
+
+#: geekjobs/stackoverflow_parser.py:39
+msgid "Sweden"
+msgstr "Schweden"
+
+#: geekjobs/stackoverflow_parser.py:40
+msgid "Spain"
+msgstr "Spanien"
+
+#: geekjobs/stackoverflow_parser.py:40
+msgid "United Kingdom"
+msgstr "Großbritannien"
+
+#: geekjobs/templates/base.html:39
+msgid "-- Post a Job --"
+msgstr "Stellen Posten"
+
+#: geekjobs/templates/base.html:52
+msgid "Contact"
+msgstr "Kontakt"
+
+#: geekjobs/templates/base.html:53
+msgid "Terms"
+msgstr ""
+
+#: geekjobs/templates/base.html:54
+msgid "Privacy"
+msgstr ""
+
+#: geekjobs/templates/index.html:20
+msgid "All jobs in"
+msgstr "Alle Stellen in"
+
+#: geekjobs/templates/new.html:13
+msgid "Choose post type"
+msgstr "Wahlt dein Post"
+
+#: geekjobs/templates/new.html:17
+msgid "Job post"
+msgstr "Angestellt"
+
+#: geekjobs/templates/new.html:18 geekjobs/templates/new.html:24
+msgid "for 30 days"
+msgstr "für 30 Tage"
+
+#: geekjobs/templates/new.html:22
+msgid "Free"
+msgstr "Kostenlos"
+
+#: geekjobs/templates/new.html:23
+msgid "Internship post"
+msgstr "Praktikum"
+
+#: geekjobs/templates/new.html:31
+msgid "First, tell us about the position"
+msgstr "Erzahlt uns über die Stelle"
+
+#: geekjobs/templates/new.html:38
+msgid "Job title"
+msgstr "Stellenbeschreibung"
+
+#: geekjobs/templates/new.html:42
+msgid "\"Technical Writer\" or \"Python Programmer\""
+msgstr ""
+
+#: geekjobs/templates/new.html:60
+msgid "\"London\", \"Munich\""
+msgstr ""
+
+#: geekjobs/templates/new.html:74
+msgid "Country"
+msgstr "Land"
+
+#: geekjobs/templates/new.html:78
+msgid "Select a country"
+msgstr "Wählt ein Land"
+
+#: geekjobs/templates/new.html:88
+msgid "Remote2"
+msgstr ""
+
+#: geekjobs/templates/new.html:92
+msgid "Allow telecommuting?"
+msgstr "Home Office erlaubt"
+
+#: geekjobs/templates/new.html:106
+msgid "Optional. $100,000-110,000"
+msgstr ""
+
+#: geekjobs/templates/new.html:118
+msgid "Job description"
+msgstr "Stellenbeschreibung"
+
+#: geekjobs/templates/new.html:137
+msgid "Example: Send a resume to jane@company.com"
+msgstr "Z.b.: Lebenslauft an mueller@firmenname.com"
+
+#: geekjobs/templates/new.html:147
+msgid "Tell us about your company"
+msgstr "Erzählt uns über deine Firma"
+
+#: geekjobs/templates/new.html:159
+msgid "Enter your company or organization´s name."
+msgstr "Firmenname"
+
+#: geekjobs/templates/new.html:177
+msgid "Example: https://mybusiness.com/careers/apply"
+msgstr "Z.b.: https://mybusiness.com/careers/apply"
+
+#: geekjobs/templates/new.html:195
+msgid "This is where we’ll send your confirmation email."
+msgstr "E-mail bestätigung"
+
+#: geekjobs/templates/new.html:206
+msgid "Preview your Ad"
+msgstr "Angebot ansehen"
+
+#: geekjobs/templates/review.html:9
+msgid "Review your ad and make changes if necessary."
+msgstr "Überpruft die Anzeige und Änderung"
+
+#: geekjobs/templates/review.html:10
+msgid "Step 2: Überpruft die Stellenanzeige"
+msgstr ""
+
+#: geekjobs/templates/review.html:15
+msgid "at"
+msgstr ""
+
+#: geekjobs/templates/review.html:22
+msgid "Posted:"
+msgstr ""
+
+#: geekjobs/templates/review.html:27
+msgid "Location:"
+msgstr "Ort"
+
+#: geekjobs/templates/review.html:32
+msgid "Job Description:"
+msgstr "Stellenbesbreibung:"
+
+#: geekjobs/templates/review.html:42
+msgid "How to apply:"
+msgstr "Wie kann man sich bewerben:"
+
+#: geekjobs/templates/review.html:53 geekjobs/views.py:38
+msgid "Pay for your Ad"
+msgstr "Bezahlen"
+
+#: geekjobs/views.py:41
+msgid "Pay for your advertisement."
+msgstr "Bezahlt deine Stellenanzeige."
