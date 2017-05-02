@@ -15,7 +15,8 @@ $('#jobs-table').bootstrapTable({
       return '<div class="well">'
       + row.summary
       + '<br><p><strong>How to apply:</strong></p><br><p>'
-      + '<a href="'+ row.link +'"> Apply via StackOverflow.' + '</p>'
+      //+ '<a target="_blank" href="'+ row.link +'"> Apply via StackOverflow.' + '</p>'
+      + '<a class="btn btn-primary btn-lg" href="'+ row.link +'"><strong> Apply here </strong></a>'
       + '</div>'
     }
   },
