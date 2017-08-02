@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-03 16:51+0100\n"
+"POT-Creation-Date: 2017-08-03 15:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,20 +126,25 @@ msgstr "España"
 msgid "United Kingdom"
 msgstr "Reino Unido"
 
-#: geekjobs/templates/base.html:39
+#: geekjobs/templates/base.html:38
 msgid "-- Post a Job --"
 msgstr "-- Publica una oferta --"
 
-#: geekjobs/templates/base.html:52
+#: geekjobs/templates/base.html:48 geekjobs/templates/contact.html:8
 msgid "Contact"
 msgstr "Contacto"
 
-#: geekjobs/templates/base.html:53
-msgid "Terms"
-msgstr "Condiciones del servicio"
-
-#: geekjobs/templates/base.html:54
+#: geekjobs/templates/base.html:49
 msgid "Privacy"
+msgstr "Privacidad"
+
+#: geekjobs/templates/contact.html:15
+msgid "Telephone"
+msgstr "Teléfono"
+
+#: geekjobs/templates/de_privacy.html:8 geekjobs/templates/es_privacy.html:8
+#: geekjobs/templates/privacy.html:8
+msgid "Legal and Privacy"
 msgstr "Privacidad"
 
 #: geekjobs/templates/index.html:20
@@ -265,6 +270,9 @@ msgstr "Paga por tu anuncio"
 #: geekjobs/views.py:41
 msgid "Pay for your advertisement."
 msgstr "Paga por tu anuncio"
+
+#~ msgid "Terms"
+#~ msgstr "Condiciones del servicio"
 
 #~ msgid "\"San Francisco\", \"Houston\""
 #~ msgstr "\"Madrid\" o \"Barcelona\""

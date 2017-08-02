@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}Privacy policy{% endblock %}
 
 {% block content %}
 <div class="container">
-  <br/><h1 class="text-center">Legal und Privacy</h1><br/>
+  <br/><h1 class="text-center">{% trans 'Legal and Privacy' %}</h1><br/>
   <p>
-    Su privacidad será respetada. Su información de contacto no será vendida a
+    Su privacidad es importante para nosotros y será respetada. Su información de contacto no será vendida a
     terceros y solamente será usada por nosotros para transmitirle información o
     promociones.
   </p>
@@ -19,13 +20,12 @@
     periodicamente.
   </p>
   <p>
-    No nos hacemos responsable de las políticas de seguridad de los enlaces a
+    No nos hacemos responsable de las políticas de privacidad de los enlaces a
     páginas web de terceros.
   </p>
   <p>
-    Hacemos uso de Google Analytics y podríamos recolectar información
-    demográfica sobre usted. Este es el enlace a la política de protección de
-    datos de Google Analytics:<br/>
+    Hacemos uso de Google Analytics esta aplicación podría recolectar informacióndemográfica sobre usted.<br/>
+    Este es el enlace a la política de protección de datos de Google Analytics:<br/>
     <a href="https://support.google.com/analytics/answer/6004245?hl=es">https://support.google.com/analytics/answer/6004245?hl=es</a>.<br/>
     Instrucción para desactivar Google Analytics:<br/>
     <a href="https://tools.google.com/dlpage/gaoptout?hl=es">https://tools.google.com/dlpage/gaoptout?hl=es</a>
