@@ -27,6 +27,6 @@ urlpatterns += i18n_patterns(
     url(r'^(?P<region>[A-Z]+$)', views.index),
     url(r'^new/$', views.new, name='new'),
     url(r'^add_job/$', views.add_job, name='add_job'),
-    url(r'^terms/$', views.terms, name='terms'),
+    url(r'^contact/$', views.contact, name='contact'),
     url(r'^privacy/$', views.privacy, name='privacy'),
 )

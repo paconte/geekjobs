@@ -64,13 +64,9 @@ def add_job(request):
     return new(request)
 
 
-def terms(request):
+def contact(request):
     lang = get_language_from_request(request, check_path=True)
-    html = 'terms.html'
-    if lang == 'es':
-        html = 'es_terms.html'
-    elif lang == 'de':
-        html = 'de_terms.html'
+    html = 'contact.html'
     return render(request, html)
 
 
