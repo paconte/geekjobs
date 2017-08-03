@@ -3,13 +3,17 @@ import time
 import math
 import json
 import os
+import logging
+import time
 from collections import OrderedDict
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
+
 # add below line to crontab:
 # 0 0,6,12,18 * * * /path/to/mycommand
 #stackoverflow_json_file = 'stackoverflow_jobs.json'
+logger = logging.getLogger(__name__)
 stackoverflow_json_file = os.path.join(settings.BASE_DIR, 'stackoverflow_jobs.json')
 
 de_states = {'DE': 'Germany', 'REMOTE': 'Remote', 'BW': 'Baden-Wuerttemberg', 'BY': 'Bayern', 'BE': 'Berlin',
@@ -29,7 +33,6 @@ DE_STATE_CHOICES = (('Germany', 'Germany'), ('BW', 'Baden-Württemberg'), ('BY',
                     ('RP', 'Rheinland-Pfalz'), ('SL', 'Saarland'), ('SN', 'Sachsen'), ('ST', 'Sachen-Anhalt'),
                     ('SH', 'Schleswig-Holstein'), ('TH', 'Thüringen'))
 
-
 eu_countries = {'EU': 'Europe', 'AT': 'Austria', 'BE': 'Belgium', 'CH': 'Switzerland', 'DE': 'Germany', 'DK': 'Denmark',
                 'FR': 'France', 'IT': 'Italy', 'LU': 'Luxembourg', 'NL': 'Netherlands', 'PL': 'Poland', 'SE': 'Sweden',
                 'SP': 'Spain', 'UK': 'United Kingdom', 'REMOTE': 'Remote'}
@@ -42,7 +45,7 @@ eu_countries_trans = {'EU': _('Europe'), 'AT': _('Austria'), 'BE': _('Belgium'),
 eu_countries_sorted = OrderedDict(
     [('EU', 'Europe'), ('AT', 'Austria'), ('BE', 'Belgium'), ('CH', 'Switzerland'), ('DE', 'Germany'),
      ('DK', 'Denmark'), ('FR', 'France'), ('IT', 'Italy'), ('LU', 'Luxembourg'), ('NL', 'Netherlands'),
-     ('PL', 'Poland'), ('SE', 'Sweden'), ('SP', 'Spain'), ('UK', 'United Kingdom'), ('REMOTE', 'Remote')]
+     ('PL', 'Poland'), ('SE', 'Sweden'), ('SP', 'Spain'), ('UK', 'UK'), ('REMOTE', 'Remote')]
 )
 
 EU_COUNTRIES_CHOICES = (
@@ -131,6 +134,7 @@ class StackOverflowFeed:
     def __init__(self):
         self._url = "https://stackoverflow.com/jobs/feed"
         self._question_mark_added = False
+        self.country = ""
 
     def _pre_add_parameter(self):
         if not self._question_mark_added:
@@ -141,6 +145,7 @@ class StackOverflowFeed:
         self.reset()
         self._pre_add_parameter()
         self._url += 'r=true'
+        self.country = "remote"
 
     def add_state(self, state):
         if state == 'Remote':
@@ -155,6 +160,7 @@ class StackOverflowFeed:
         self.reset()
         self._pre_add_parameter()
         self._url += 'sort=i&' + 'l=' + country + '&d=20&u=Km'
+        self.country = country
 
     def reset(self):
         self._url = "https://stackoverflow.com/jobs/feed"
@@ -181,6 +187,16 @@ def get_stackoverflow_by_state(country):
     sofeed.add_country(country)
     jobs = sofeed.parse()
     result = []
+    # retry if no jobs found
+    if len(jobs["items"]) == 0:
+        for i in range(3):
+            if len(jobs["items"]) == 0:
+                logger.warning('No jobs found for %s, trying again for %s' % (sofeed.country, sofeed._url))
+                time.sleep(3)
+                jobs = sofeed.parse()
+            else:
+                break
+    # extract jobs
     for item in jobs["items"]:
         try:
             location = item.location
@@ -239,7 +255,8 @@ def _check_stackoverflow_json(json):
         if not isinstance(json['DE'], list) or not isinstance(json['UK'], list):
             return False
         if len(json['DE']) < 1 or len(json['UK']) < 1:
-            return False
+            logger.warning('No jobs found for DE or UK !!!')
+            # return False
     except KeyError:
         return False
     return True
@@ -253,6 +270,10 @@ def load_stackoverflow_jobs():
 
     :return: dictionary with stackoverflow jobs
     """
+    result = _load_stackoverflow_jobs()
+    if not _check_stackoverflow_json(result):
+        raise FileNotFoundError
+    """
     for i in range(10):
         try:
             result = _load_stackoverflow_jobs()
@@ -261,6 +282,7 @@ def load_stackoverflow_jobs():
             break  # if works then do not retry to download the file!!
         except FileNotFoundError:
             download_stackoverflow_jobs()
+    """
     return result
 
 
@@ -310,4 +332,3 @@ def test_urls():
 def test_load():
     a = load_stackoverflow_jobs()
     print(a)
-
